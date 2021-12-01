@@ -1,0 +1,30 @@
+#  Name of workflow
+name: Deploy To Netlify
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    env:
+      NODE_ENV: production
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13'
+          cache: 'yarn'
+            
+      - name: Setup Environment
+        run: yarn install
+        
+      - name: Deploy to netlify
+        run: yarn deploy-to-netlify
