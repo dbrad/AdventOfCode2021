@@ -3,13 +3,10 @@
   "author": "David Brad",
   "license": "MIT",
   "scripts": {
-    "dev-server": "http-server ./src -c-1",
     "deploy-to-netlify": "netlify deploy --dir src --prod"
   },
   "dependencies": {
     "netlify-cli": "^6.7.1"
   },
-  "devDependencies": {
-    "http-server": "^14.0.0"
-  }
+  "devDependencies": {}
 }

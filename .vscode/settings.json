@@ -8,5 +8,6 @@
   "javascript.referencesCodeLens.enabled": true,
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "editor.fontFamily": "'Victor Mono', monospace",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "liveServer.settings.root": "/src"
 }
