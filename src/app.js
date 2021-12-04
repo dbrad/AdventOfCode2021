@@ -17,7 +17,7 @@ export const dayElement = document.querySelector("#day");
 export const consoleElement = document.querySelector("#console");
 
 
-const dayNumber = 3;
+const dayNumber = 4;
 const days = [...Array(dayNumber).keys()];
 
 function clearConsole()
@@ -81,7 +81,7 @@ async function loadFile(day, part, file, targetElement)
     }
     pre.innerHTML = data.join("");
 
-    let input = (await import(`/Day${ day }/Part${ part }/input.js`)).default;
+    let input = (await import(`/Day${ day }/input.js`)).default;
     let solution = (await import(filename)).default;
     runBtn.onclick = async (event) =>
     {
@@ -111,7 +111,7 @@ async function openDay(day)
             pre.classList.add("hidden");
         }
     }
-    history.pushState({day: day}, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
+    history.pushState({ day: day }, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
     listElement.classList.add("hidden");
     dayElement.classList.remove("hidden");
 
@@ -145,7 +145,7 @@ window.addEventListener("load", async () =>
         const dayLink = document.createElement("div");
         dayLink.classList.add("button");
         dayLink.innerHTML = `Day ${ (day + 1 + "").padStart(2, "0") }`;
-        dayLink.onclick = async () => {await openDay(day + 1);};
+        dayLink.onclick = async () => { await openDay(day + 1); };
         listElement.appendChild(dayLink);
     }
 
