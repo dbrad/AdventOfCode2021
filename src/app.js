@@ -17,7 +17,7 @@ export const dayElement = document.querySelector("#day");
 export const consoleElement = document.querySelector("#console");
 
 
-const dayNumber = 4;
+const dayNumber = 5;
 const days = [...Array(dayNumber).keys()];
 
 function clearConsole()
@@ -111,7 +111,7 @@ async function openDay(day)
             pre.classList.add("hidden");
         }
     }
-    history.pushState({ day: day }, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
+    history.pushState({day: day}, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
     listElement.classList.add("hidden");
     dayElement.classList.remove("hidden");
 
@@ -145,7 +145,7 @@ window.addEventListener("load", async () =>
         const dayLink = document.createElement("div");
         dayLink.classList.add("button");
         dayLink.innerHTML = `Day ${ (day + 1 + "").padStart(2, "0") }`;
-        dayLink.onclick = async () => { await openDay(day + 1); };
+        dayLink.onclick = async () => {await openDay(day + 1);};
         listElement.appendChild(dayLink);
     }
 

@@ -1,12 +1,12 @@
-import { assertEquals, describe, it } from "../../lib/testing.js";
+import {assertEquals, describe, it} from "../../lib/testing.js";
 
 import fn from "./main.js";
 
 export default async function ()
 {
-  describe("When testing a test", async () =>
+  describe("Scanning for thermal vents", async () =>
   {
-    it("should return true", async () =>
+    it("should return 5 points of 2 or larger for the test input", async () =>
     {
       const input = [
         "0,9 -> 5,9",
@@ -20,7 +20,7 @@ export default async function ()
         "0,0 -> 8,8",
         "5,5 -> 8,2",
       ];
-      assertEquals(await fn(input), 0);
+      assertEquals(await fn(input), 5);
     });
   });
 }
