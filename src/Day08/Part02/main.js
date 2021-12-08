@@ -57,16 +57,14 @@ export default async function (input)
       {
         let overlapWith1 = howManySegmentsOverlap(digit, digitMapping[1]);
         let overlapWith4 = howManySegmentsOverlap(digit, digitMapping[4]);
-        if (overlapWith4 === 3)
+
+        if (overlapWith1 === 2)
         {
-          if (overlapWith1 === 2)
-          {
-            digitMapping[3] = digit;
-          }
-          else
-          {
-            digitMapping[5] = digit;
-          }
+          digitMapping[3] = digit;
+        }
+        else if (overlapWith4 === 3)
+        {
+          digitMapping[5] = digit;
         }
         else
         {
@@ -77,11 +75,11 @@ export default async function (input)
       {
         let overlapWith1 = howManySegmentsOverlap(digit, digitMapping[1]);
         let overlapWith4 = howManySegmentsOverlap(digit, digitMapping[4]);
-        if (overlapWith4 === 4 && overlapWith1 === 2)
+        if (overlapWith4 === 4)
         {
           digitMapping[9] = digit;
         }
-        else if (overlapWith4 === 3 && overlapWith1 === 2)
+        else if (overlapWith1 === 2)
         {
           digitMapping[0] = digit;
         }
