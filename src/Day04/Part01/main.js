@@ -1,14 +1,14 @@
 export default async function (input)
 {
   const inputText = await (await fetch(input)).text();
-  const inputChunks = inputText.split("\n\n");
+  const inputChunks = inputText.split(/\r?\n\r?\n/);
   const callNumbers = inputChunks[0].split(",").map(strNum => Number(strNum));
   const bingoCards = [];
   const bingoCardMarkers = [];
   for (let i = 1; i < inputChunks.length; i++)
   {
     let bingoCard = [];
-    let cardLineStrings = inputChunks[i].split("\n");
+    let cardLineStrings = inputChunks[i].split(/\r?\n/);
     for (let cardLine of cardLineStrings)
     {
       for (let stringIndex = 0; stringIndex < 14; stringIndex += 3)

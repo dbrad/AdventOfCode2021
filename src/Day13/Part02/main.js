@@ -1,37 +1,37 @@
-import {log} from "../../app.js";
+import { log } from "../../app.js";
 
 export default async function (input)
 {
   const inputText = await (await fetch(input)).text();
-  const [coordinatesRaw, foldsRaw] = inputText.split("\n\n");
+  const [coordinatesRaw, foldsRaw] = inputText.split(/\r?\n\r?\n/);
   const coordinates = coordinatesRaw
-    .split("\n")
+    .split(/\r?\n/)
     .map(str =>
     {
       let [xString, yString] = str.split(",");
-      return {x: Number(xString), y: Number(yString)};
+      return { x: Number(xString), y: Number(yString) };
     });
 
   const folds = foldsRaw
-    .split("\n")
+    .split(/\r?\n/)
     .map(foldInstruction => foldInstruction.split(" ")[2])
     .map(foldCoordinate =>
     {
       let [axis, value] = foldCoordinate.split("=");
-      return {axis: axis, value: Number(value)};
+      return { axis: axis, value: Number(value) };
     });
 
   let maxX = 0;
   let maxY = 0;
   let grid = [];
 
-  for (let {x, y} of coordinates)
+  for (let { x, y } of coordinates)
   {
     if (x > maxX) maxX = x;
     if (y > maxY) maxY = y;
   }
 
-  for (let {x, y} of coordinates)
+  for (let { x, y } of coordinates)
   {
     grid[x + y * (maxX + 1)] = true;
   }

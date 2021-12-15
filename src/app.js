@@ -73,7 +73,7 @@ async function loadFile(day, part, file, targetElement)
     }
     const fileContents = await response.text();
     const formatted = fileContents.replace(/[<]/g, "&lt;").replace(/[>]/g, "&gt;");
-    const lines = formatted.split("\n");
+    const lines = formatted.split(/\r?\n/);
     const data = [];
     for (const line of lines)
     {
@@ -111,7 +111,7 @@ async function openDay(day)
             pre.classList.add("hidden");
         }
     }
-    history.pushState({day: day}, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
+    history.pushState({ day: day }, `Day ${ (day + "").padStart(2, "0") }`, `?day=${ day }`);
     listElement.classList.add("hidden");
     dayElement.classList.remove("hidden");
 
@@ -145,7 +145,7 @@ window.addEventListener("load", async () =>
         const dayLink = document.createElement("div");
         dayLink.classList.add("button");
         dayLink.innerHTML = `Day ${ (day + 1 + "").padStart(2, "0") }`;
-        dayLink.onclick = async () => {await openDay(day + 1);};
+        dayLink.onclick = async () => { await openDay(day + 1); };
         listElement.appendChild(dayLink);
     }
 

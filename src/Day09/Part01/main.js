@@ -1,7 +1,7 @@
 export default async function (input)
 {
   const inputText = await (await fetch(input)).text();
-  const inputLines = inputText.split("\n");
+  const inputLines = inputText.split(/\r?\n/);
 
   const heightMapWidth = inputLines[0].length;
   const heightMapHeight = inputLines.length;
